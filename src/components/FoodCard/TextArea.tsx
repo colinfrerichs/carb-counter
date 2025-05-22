@@ -4,10 +4,6 @@ import React, { ChangeEvent, useCallback, useState } from "react";
 import { debounce } from "lodash";
 import updateUserMeal from "@/actions/updateUserMeal";
 
-/**
-  COMPONENT: TextArea
-  DESCRIPTION: A simple text area component that updates the user meal on the server.
-**/
 const TextArea = () => {
   const [text, setText] = useState("");
 
@@ -23,12 +19,16 @@ const TextArea = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <textarea
-        className="w-full resize-none border-gray-500 rounded-lg"
+        className="peer w-full h-f p-3 border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-blue-500 resize-none"
         onChange={handleChange}
+        placeholder=" "
         value={text}
       />
+      <label className="absolute left-3 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+        Meal
+      </label>
     </div>
   );
 };

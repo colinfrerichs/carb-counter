@@ -1,9 +1,9 @@
-import FoodCard from "@/components/FoodCard/FoodCard";
+import CardContainer from "@/components/CardContainer/CardContainer";
 
 export default function Home() {
   return (
     <div>
-      <FoodCard />
+      <CardContainer />
     </div>
   );
 }

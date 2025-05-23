@@ -2,16 +2,23 @@ import React from "react";
 import FoodCardInput from "./FoodCardInput";
 import FoodCardTitle from "./FoodCardTitle";
 
+interface FoodCardProps {
+  foodCardProps: {
+    meal: string;
+    carbs: number;
+    insulin: number;
+    notes: string;
+  };
+}
+
 /**
  * @component FoodCard
  * @description The entire food card component that will contain the title and the inputs.
  * @returns HTMLDivElement
- *
- * @thoughts
- * This component needs to be able to pull data and populate it the child components and update them.
- * Lets work on this later, as we don't have a backend yet.
  */
-const FoodCard = () => {
+const FoodCard = ({
+  foodCardProps: { meal, carbs, insulin, notes },
+}: FoodCardProps) => {
   return (
     <div className="grid grid-rows-2">
       <div className="bg-rose-500 mx-6 rounded-lg">
@@ -25,6 +32,7 @@ const FoodCard = () => {
                 inputTitle: "Meal",
                 inputType: "text",
                 toUpdate: "meal",
+                data: meal,
               }}
             />
           </div>
@@ -36,6 +44,7 @@ const FoodCard = () => {
                 inputTitle: "Carb Count",
                 inputType: "number",
                 toUpdate: "carbs",
+                data: carbs,
               }}
             />
           </div>
@@ -47,6 +56,7 @@ const FoodCard = () => {
                 inputTitle: "Units Delivered",
                 inputType: "number",
                 toUpdate: "insulin",
+                data: insulin,
               }}
             />
           </div>
@@ -58,6 +68,7 @@ const FoodCard = () => {
                 inputTitle: "Notes",
                 inputType: "text",
                 toUpdate: "notes",
+                data: notes,
               }}
             />
           </div>

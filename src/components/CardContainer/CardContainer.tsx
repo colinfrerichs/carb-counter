@@ -1,35 +1,57 @@
-import React from "react";
-import FoodCard from "../FoodCard/FoodCard";
+"use client";
 
-type FakeData = {
-  id: number;
-  meal: string;
-  carbs: number;
-  insulin: number;
-  notes: string;
-};
-
-async function fetchCards() {
-  const response = await fetch("http://localhost:3000/api/getFoodCards");
-  const data = await response.json();
-
-  return data;
-}
+import React, { useEffect, useState } from "react";
+import FoodCard from "./FoodCard/FoodCard";
+import AddFoodCard from "./AddFoodCard/AddFoodCard";
 
 /**
  * @component CardContainer
  * @description All of the Food Cards will be contained within this component.
  * @returns HTMLDivElement
  */
-const CardContainer = async () => {
-  const data: FakeData[] = await fetchCards();
-  console.log("Fetched data:", data);
+const CardContainer = () => {
+  // Create a state to hold the food cards.
+  const [cards, setCards] = useState<
+    {
+      id: number;
+      meal: string;
+      carbs: number;
+      insulin: number;
+      notes: string;
+    }[]
+  >([]);
+
+  // Fetch cards and bind them to the state of the component.
+  useEffect(() => {
+    fetch("http://localhost:3000/api/getFoodCards")
+      .then((response) => response.json())
+      .then(setCards);
+  }, []);
+
+  /**
+   * @function handleAddCard
+   * @description "Endpoint" function that will handle adding a new card to the state.
+   * @returns void
+   */
+  function handleAddCard() {
+    // Create a new card with dummy data.
+    const newCard = {
+      id: cards.length + 1,
+      meal: "New Meal",
+      carbs: 0,
+      insulin: 0,
+      notes: "",
+    };
+
+    // Update the state with the new card.
+    setCards((prevCards) => [...prevCards, newCard]);
+  }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
       <div className="grid grid-rows-2">
-        <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
-          {data.map((card) => (
+        <div className="bg-blue-500 grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
+          {cards.map((card) => (
             <FoodCard
               key={card.id}
               foodCardProps={{
@@ -41,8 +63,8 @@ const CardContainer = async () => {
             />
           ))}
         </div>
-        <div className="p-4">
-          <h1>Hello World</h1>
+        <div className="bg-red-500 h-10 pr-5 flex flex-row-reverse">
+          <AddFoodCard onButtonClick={handleAddCard} />
         </div>
       </div>
     </div>

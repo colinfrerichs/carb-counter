@@ -1,5 +1,5 @@
 import React from "react";
-import FoodCardInput from "./FoodCardInput";
+import FoodCardUserInput from "./FoodCardUserInput";
 import FoodCardTitle from "./FoodCardTitle";
 
 interface FoodCardProps {
@@ -20,58 +20,49 @@ const FoodCard = ({
   foodCardProps: { meal, carbs, insulin, notes },
 }: FoodCardProps) => {
   return (
-    <div className="grid grid-rows-2">
-      <div className="bg-rose-500 mx-6 rounded-lg">
+    <div className="FFFFFF grid grid-rows-[auto] rounded-lg shadow-2xl border-[#E5E7EB]">
+      <div className="h-fit">
         <FoodCardTitle />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-3">
-        <div className="pl-6 rounded">
-          <div className="flex">
-            <FoodCardInput
-              inputProps={{
-                inputTitle: "Meal",
-                inputType: "text",
-                toUpdate: "meal",
-                data: meal,
-              }}
-            />
-          </div>
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-4 p-4">
+        <div className="flex">
+          <FoodCardUserInput
+            inputProps={{
+              title: "Meal",
+              type: "text",
+              toUpdate: "meal",
+              data: meal,
+            }}
+          />
         </div>
-        <div className="px-6 rounded">
-          <div className="flex">
-            <FoodCardInput
-              inputProps={{
-                inputTitle: "Carb Count",
-                inputType: "number",
-                toUpdate: "carbs",
-                data: carbs,
-              }}
-            />
-          </div>
+        <div className="flex">
+          <FoodCardUserInput
+            inputProps={{
+              title: "Carb Count",
+              type: "number",
+              toUpdate: "carbs",
+              data: carbs,
+            }}
+          />
         </div>
-        <div className="px-6 rounded">
-          <div className="flex">
-            <FoodCardInput
-              inputProps={{
-                inputTitle: "Units Delivered",
-                inputType: "number",
-                toUpdate: "insulin",
-                data: insulin,
-              }}
-            />
-          </div>
+        <div className="flex">
+          <FoodCardUserInput
+            inputProps={{
+              title: "Units Delivered",
+              type: "number",
+              toUpdate: "insulin",
+              data: insulin,
+            }}
+          />
         </div>
-        <div className="pr-6 rounded">
-          <div className="flex">
-            <FoodCardInput
-              inputProps={{
-                inputTitle: "Notes",
-                inputType: "text",
-                toUpdate: "notes",
-                data: notes,
-              }}
-            />
-          </div>
+        <div className="flex">
+          <FoodCardUserInput
+            inputProps={{
+              title: "Notes",
+              toUpdate: "notes",
+              data: notes,
+            }}
+          />
         </div>
       </div>
     </div>

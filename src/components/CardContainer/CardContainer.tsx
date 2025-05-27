@@ -48,24 +48,22 @@ const CardContainer = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
-      <div className="grid grid-rows-2">
-        <div className="bg-blue-500 grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
-          {cards.map((card) => (
-            <FoodCard
-              key={card.id}
-              foodCardProps={{
-                meal: card.meal,
-                carbs: card.carbs,
-                insulin: card.insulin,
-                notes: card.notes,
-              }}
-            />
-          ))}
-        </div>
-        <div className="bg-red-500 h-10 pr-5 flex flex-row-reverse">
-          <AddFoodCard onButtonClick={handleAddCard} />
-        </div>
+    <div className="grid grid-rows-2">
+      <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
+        {cards.map((card) => (
+          <FoodCard
+            key={card.id}
+            foodCardProps={{
+              meal: card.meal,
+              carbs: card.carbs,
+              insulin: card.insulin,
+              notes: card.notes,
+            }}
+          />
+        ))}
+      </div>
+      <div className="fixed bottom-0 right-4 p-4 shadow-2xl justify-end">
+        <AddFoodCard onButtonClick={handleAddCard} />
       </div>
     </div>
   );

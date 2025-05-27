@@ -1,5 +1,5 @@
 import React from "react";
-import EditIcon from "./EditIcon";
+import EditIcon from "../../Edit/EditIcon";
 
 /**
  * @component FoodCardTitle

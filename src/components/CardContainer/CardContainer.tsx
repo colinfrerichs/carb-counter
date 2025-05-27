@@ -44,7 +44,7 @@ const CardContainer = () => {
     };
 
     // Update the state with the new card.
-    setCards((prevCards) => [...prevCards, newCard]);
+    setCards((prevCards) => [newCard, ...prevCards]);
   }
 
   return (

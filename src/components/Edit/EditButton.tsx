@@ -1,18 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
-import EditMenu from "./EditMenu";
+
+interface EditButtonProps {
+  editProps: {
+    handleDelete: (id: number) => void;
+    id: number;
+  };
+}
 
 /**
  * @component EditIcon
  * @description Edit button handles both the edit and deleve functionality of the food card.
  * @returns HTMLButtonElement
  */
-const EditIcon = () => {
+const EditButton = ({ editProps: { id, handleDelete } }: EditButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
-      // If the click is outside the menu, close it
       if (
         menuRef.current &&
         event.target &&
@@ -50,14 +55,21 @@ const EditIcon = () => {
             d="M6 12h.01m6 0h.01m5.99 0h.01"
           />
         </svg>
-        {isOpen && (
-          <div className="absolute right-0 z-10" ref={menuRef}>
-            <EditMenu />
-          </div>
-        )}
       </button>
+      {isOpen && (
+        <div className="absolute right-0 z-10" ref={menuRef}>
+          <div className="border-[#E5E7EB] bg-white border-1 border-solid shadow-2xl rounded-lg hover:cursor-pointer">
+            <button
+              onClick={() => handleDelete(id)}
+              className="w-full px-4 py-2 text-[#4B5563] font-bold"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default EditIcon;
+export default EditButton;

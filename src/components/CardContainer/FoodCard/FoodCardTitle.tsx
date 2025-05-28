@@ -1,5 +1,4 @@
 import React from "react";
-import EditIcon from "../../Edit/EditIcon";
 
 /**
  * @component FoodCardTitle
@@ -8,13 +7,8 @@ import EditIcon from "../../Edit/EditIcon";
  */
 const FoodCardTitle = () => {
   return (
-    <div className="grid grid-cols-2 bg-[#3B82F6] text-white rounded-t-lg rounded-b-none px-4 py-3">
-      <div>
-        <h1 className="font-bold">Pizza</h1>
-      </div>
-      <div className="flex justify-end">
-        <EditIcon />
-      </div>
+    <div className="px-4 py-3">
+      <h1 className="flex font-bold text-2xl">Pizza</h1>
     </div>
   );
 };

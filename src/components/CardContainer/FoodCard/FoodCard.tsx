@@ -1,12 +1,15 @@
 import React from "react";
-import FoodCardUserInput from "./FoodCardUserInput";
+import EditButton from "../../Edit/EditButton";
 import FoodCardTitle from "./FoodCardTitle";
+import FoodCardUserInput from "./FoodCardUserInput";
 
 interface FoodCardProps {
   foodCardProps: {
-    meal: string;
     carbs: number;
+    handleDelete: (id: number) => void;
+    id: number;
     insulin: number;
+    meal: string;
     notes: string;
   };
 }
@@ -17,12 +20,17 @@ interface FoodCardProps {
  * @returns HTMLDivElement
  */
 const FoodCard = ({
-  foodCardProps: { meal, carbs, insulin, notes },
+  foodCardProps: { carbs, id, insulin, meal, notes, handleDelete },
 }: FoodCardProps) => {
   return (
-    <div className="FFFFFF grid grid-rows-[auto] rounded-lg shadow-2xl border-[#E5E7EB]">
-      <div className="h-fit">
-        <FoodCardTitle />
+    <div className="grid grid-rows-[auto] rounded-lg shadow-2xl border-[#E5E7EB] border-1 border-solid">
+      <div className="grid grid-cols-2 h-fit rounded-t-lg rounded-b-none items-center bg-[#3B82F6] text-white">
+        <div>
+          <FoodCardTitle />
+        </div>
+        <div className="flex justify-end px-6">
+          <EditButton editProps={{ id, handleDelete }} />
+        </div>
       </div>
       <div className="grid md:grid-cols-4 grid-cols-1 gap-4 p-4">
         <div className="flex">

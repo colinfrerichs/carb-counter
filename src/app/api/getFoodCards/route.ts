@@ -2,7 +2,17 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const foodData = [
-    {id: 1, meal: "Pizza", carbs: 30, insulin: 5, notes: "Need more insluin, went high after."},
+    {
+      calories: 610,
+      carbs: 43,
+      fat: 24,
+      id: 1,
+      insulin: 6.5,
+      meal: "Double Double", 
+      notes: "Went high after, change how bolus works over time.", 
+      protein: 26, 
+      reminder: false
+    },
   ];
 
   return NextResponse.json(foodData);

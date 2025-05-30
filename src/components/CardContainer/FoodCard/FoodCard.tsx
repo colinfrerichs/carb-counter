@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
 import DesktopFoodCard from "./Desktop/DesktopFoodCard";
 import MobileFoodCard from "./Mobile/MobileFoodCard";
+import React from "react";
 
 interface FoodCardProps {
   foodCardProps: {

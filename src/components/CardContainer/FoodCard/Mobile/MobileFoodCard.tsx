@@ -1,9 +1,9 @@
 "use client";
 
+import ExpandedMobileCard from "./ExpandedMobileCard";
 import FoodCardTitle from "../FoodCardTitle";
 import { motion, AnimatePresence } from "motion/react";
 import React, { useState } from "react";
-import ExpandedMobileCard from "./ExpandedMobileCard";
 
 interface Props {
   props: {
@@ -59,10 +59,13 @@ const MobileFoodCard = ({
                 zIndex: 50,
                 padding: "1rem",
               }
-            : {}
+            : {
+                width: "100%",
+                height: "fit-content",
+              }
         }
         transition={{ duration: 0.5 }}
-        className="flex flex-col items-center justify-center shadow-lg cursor-pointer overflow-auto text-white"
+        className="flex flex-col items-center justify-center shadow-lg overflow-auto text-white"
       >
         {open ? (
           <ExpandedMobileCard

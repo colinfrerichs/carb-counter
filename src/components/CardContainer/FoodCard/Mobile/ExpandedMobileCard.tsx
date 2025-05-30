@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import FoodCardData from "../FoodCardData";
 
 interface Props {
   props: {
@@ -52,36 +53,73 @@ const ExpandedMobileCard = ({ props }: Props) => {
 
   return (
     <div className="bg-[#3B82F6] h-full w-full">
-      <div className="grid grid-rows-[auto]">
-        <div className="p-3">
-          <button
-            onClick={props.handleCloseCard}
-            className="cursor-pointer p-3 bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200"
+      <div className="bg-[#F59E0B] p-3">
+        <button onClick={props.handleCloseCard} className="p-3">
+          <svg
+            className="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
           >
-            <svg
-              className="w-6 h-6 text-gray-800 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 9h4m0 0V5m0 4L4 4m15 5h-4m0 0V5m0 4 5-5M5 15h4m0 0v4m0-4-5 5m15-5h-4m0 0v4m0-4 5 5"
-              />
-            </svg>
-          </button>
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 9h4m0 0V5m0 4L4 4m15 5h-4m0 0V5m0 4 5-5M5 15h4m0 0v4m0-4-5 5m15-5h-4m0 0v4m0-4 5 5"
+            />
+          </svg>
+        </button>
+        <input className="text-black" placeholder={props.meal} />
+      </div>
+      <div className="grid grid-cols-1 gap-4 p-4">
+        <div>
+          <FoodCardData
+            props={{
+              data: props.meal,
+              title: "Meal",
+              type: "text",
+              toUpdate: "meal",
+            }}
+          />
+        </div>
+        <div>
+          <FoodCardData
+            props={{
+              data: props.meal,
+              title: "Meal",
+              type: "text",
+              toUpdate: "meal",
+            }}
+          />
+        </div>
+        <div>
+          <FoodCardData
+            props={{
+              data: props.meal,
+              title: "Meal",
+              type: "text",
+              toUpdate: "meal",
+            }}
+          />
+        </div>
+        <div>
+          <FoodCardData
+            props={{
+              data: props.meal,
+              title: "Meal",
+              toUpdate: "meal",
+            }}
+          />
         </div>
       </div>
       <div className="grid grid-col-1 p-3">
         <button
           onClick={() => props.handleDelete(props.id)}
-          className="cursor-pointer bg-red-500 text-white rounded-lg p-3"
+          className="cursor-pointer bg-[#EF4444] text-white rounded-lg p-3"
         >
           Delete
         </button>

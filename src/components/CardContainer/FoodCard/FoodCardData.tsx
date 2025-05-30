@@ -3,7 +3,7 @@
 import React, { ChangeEvent, useEffect, useId, useState } from "react";
 
 interface FoodCardInputProps {
-  inputProps: {
+  props: {
     data?: string | number;
     title: string;
     type?: string;
@@ -17,7 +17,7 @@ interface FoodCardInputProps {
  * @returns HTMLInputElement
  */
 const FoodCardInput = ({
-  inputProps: { data, title, type, toUpdate },
+  props: { data, title, type, toUpdate },
 }: FoodCardInputProps) => {
   const id = useId();
   const [text, setText] = useState(type === "number" ? Number(data) : data);

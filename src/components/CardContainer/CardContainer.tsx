@@ -1,8 +1,8 @@
 "use client";
 
 import AddFoodCard from "./AddFoodCard/AddFoodCard";
-import FoodCard from "./FoodCard/FoodCard";
 import EmptyContainer from "./FoodCard/EmptyContainer";
+import FoodCard from "./FoodCard/FoodCard";
 import Loading from "./loading";
 import React, { useEffect, useState } from "react";
 

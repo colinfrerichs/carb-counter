@@ -2,20 +2,16 @@
 
 import React from "react";
 
-interface AddFoodCardProps {
-  onButtonClick: () => void;
-}
-
 /**
  * @component AddFoodCard
  * @description An HTML component that will add a card when clicked.
  * @returns void
  */
-const AddFoodCard = ({ onButtonClick }: AddFoodCardProps) => {
+const AddFoodCard = () => {
   return (
     <button
-      className="bg-[#3B82F6] text-[#F8EDFF] rounded-4xl pb-2 pt-2 px-4 shadow-2xl hover:cursor-pointer transition-colors duration-300"
-      onClick={onButtonClick}
+      className="transition duration-150 active:scale-95 active:bg-red-600 md:hover:scale-110 bg-[#3B82F6] hover:bg-blue-600 py-2 px-4 rounded-4xl"
+      // onClick={onButtonClick}
     >
       <svg
         className="w-6 h-6 text-gray-800 dark:text-white"

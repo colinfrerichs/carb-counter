@@ -35,7 +35,10 @@ const ExpandedFoodCard = ({ data }: { data: ExpandedData }) => {
    * This will mimic the endpoint for now, but in the future when a backend is hooked up - the update will be persistent.
    * @returns void
    */
-  function handleInputUpdate(e: ChangeEvent<HTMLInputElement>, field: string) {
+  function handleInputUpdate(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    field: string
+  ) {
     setCardData((prev) => ({
       ...prev,
       [field]: e.target.value,
@@ -86,12 +89,13 @@ const ExpandedFoodCard = ({ data }: { data: ExpandedData }) => {
           </div>
           <div className="grid grid-rows-auto gap-4">
             <h2 className="text-2xl font-bold mb-2">{cardData.meal}</h2>
-            <input
+            {/* <input
               onChange={(e) => handleInputUpdate(e, "calories")}
               placeholder="Calories"
               type="number"
               value={cardData.calories}
-            />
+            /> */}
+            {/* <div className="relative"></div> */}
             <input
               onChange={(e) => handleInputUpdate(e, "carbs")}
               placeholder="Carbs"
@@ -116,7 +120,11 @@ const ExpandedFoodCard = ({ data }: { data: ExpandedData }) => {
               type="number"
               value={cardData.protein}
             />
-            <textarea placeholder="Notes" value={cardData.notes} />
+            <textarea
+              onChange={(e) => handleInputUpdate(e, "notes")}
+              placeholder="Notes"
+              value={cardData.notes}
+            />
             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded cursor-pointer">
               Delete
             </button>

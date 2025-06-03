@@ -36,7 +36,7 @@ const CardGrid = ({ cards }: { cards: CardData[] }) => {
   }
 
   return (
-    <div className="relative bg-gray-100 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="relative bg-gray-100 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card) => (
         <FoodCard
           key={card.id}

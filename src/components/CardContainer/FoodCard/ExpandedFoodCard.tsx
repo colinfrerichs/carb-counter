@@ -66,7 +66,7 @@ const ExpandedFoodCard = ({ data }: { data: ExpandedData }) => {
           <div>
             <button
               onClick={() => cardData.handleExpandCard(null)}
-              className="cursor-pointer pb-4"
+              className="cursor-pointer"
             >
               <svg
                 className="w-6 h-6 text-orange-500"
@@ -89,42 +89,6 @@ const ExpandedFoodCard = ({ data }: { data: ExpandedData }) => {
           </div>
           <div className="grid grid-rows-auto gap-4">
             <h2 className="text-2xl font-bold mb-2">{cardData.meal}</h2>
-            {/* <input
-              onChange={(e) => handleInputUpdate(e, "calories")}
-              placeholder="Calories"
-              type="number"
-              value={cardData.calories}
-            /> */}
-            {/* <div className="relative"></div> */}
-            <input
-              onChange={(e) => handleInputUpdate(e, "carbs")}
-              placeholder="Carbs"
-              type="number"
-              value={cardData.carbs}
-            />
-            <input
-              onChange={(e) => handleInputUpdate(e, "fat")}
-              placeholder="Fat"
-              type="number"
-              value={cardData.fat}
-            />
-            <input
-              onChange={(e) => handleInputUpdate(e, "insulin")}
-              placeholder="Insulin"
-              type="number"
-              value={cardData.insulin}
-            />
-            <input
-              onChange={(e) => handleInputUpdate(e, "protein")}
-              placeholder="Protein"
-              type="number"
-              value={cardData.protein}
-            />
-            <textarea
-              onChange={(e) => handleInputUpdate(e, "notes")}
-              placeholder="Notes"
-              value={cardData.notes}
-            />
             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded cursor-pointer">
               Delete
             </button>

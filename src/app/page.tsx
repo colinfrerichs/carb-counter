@@ -1,9 +1,5 @@
-import CardContainer from "@/components/CardContainer/CardContainer";
+import GridContainer from "@/components/GridContainer/GridContainer";
 
 export default async function Home() {
-  return (
-    <div>
-      <CardContainer />
-    </div>
-  );
+  return <GridContainer />;
 }

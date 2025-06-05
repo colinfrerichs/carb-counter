@@ -1,14 +1,12 @@
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
+import React, { useEffect, useState } from "react";
 
-interface GlanceData {
+interface CollapsedCardData {
   calories: number;
   carbs: number;
   fat: number;
-  handleExpandCard: (id: number) => void;
-  id: number;
+  handleExpandCard: () => void;
   meal: string;
   protein: number;
   reminder: boolean;
@@ -19,17 +17,30 @@ interface GlanceData {
  * @description The entire food card component that will contain the title and the inputs.
  * @returns HTMLDivElement
  */
-const FoodCard = ({ data }: { data: GlanceData }) => {
+const FoodCard = ({
+  collapsedCardData,
+}: {
+  collapsedCardData: CollapsedCardData;
+}) => {
+  const [cardData, setCardData] = useState(collapsedCardData);
+
+  useEffect(() => {
+    setCardData(collapsedCardData);
+  }, [collapsedCardData]);
+
   return (
-    <motion.div
-      layoutId={`card-${data.id}`}
-      onClick={() => data.handleExpandCard(data.id)}
+    <div
+      aria-labelledby="nutrition-card"
+      onClick={() => cardData.handleExpandCard()}
       className="bg-gray-50 h-fit rounded-2xl shadow-xl cursor-pointer hover:scale-105 transform duration-105"
     >
-      <div className="bg-blue-500 text-white p-4 rounded-t-2xl">
+      <section
+        className="bg-blue-500 text-white p-4 rounded-t-2xl"
+        aria-label="warning-icon"
+      >
         <div className="flex justify-between">
-          <h2 className="text-xl font-bold">{data.meal}</h2>
-          {data.reminder && (
+          <h2 className="text-xl font-bold">{cardData.meal}</h2>
+          {cardData.reminder && (
             <div>
               <svg
                 className="w-6 h-6 text-rose-400"
@@ -51,15 +62,23 @@ const FoodCard = ({ data }: { data: GlanceData }) => {
             </div>
           )}
         </div>
-      </div>
-      <div className="relative items-center justify-center h-fit p-4">
-        <div className="grid grid-rows-4 sm:grid-rows-1 gap-2">
+      </section>
+      <section className="relative items-center justify-center h-fit p-4">
+        <article
+          role="listitem"
+          tabIndex={0}
+          className="grid grid-rows-4 sm:grid-rows-1 gap-2"
+          aria-labelledby="nutrition-details"
+        >
           <div className="grid grid-cols-2 border-b-1 border-orange-500">
             <div className="col-span-1 pb-2 pl-2">
               <dt className="font-semibold">Calories</dt>
             </div>
             <div className="col-span-1">
-              <dd className="font-semibold">{data.calories}</dd>
+              <dd className="font-semibold">
+                <span className="sr-only">Calorie count</span>
+                {cardData.calories || 0}
+              </dd>
             </div>
           </div>
           <div className="grid grid-cols-2 border-b-1 border-orange-500">
@@ -67,7 +86,10 @@ const FoodCard = ({ data }: { data: GlanceData }) => {
               <dt className="font-semibold">Carbs</dt>
             </div>
             <div className="col-span-1">
-              <dd className="font-semibold">{data.carbs}g</dd>
+              <dd className="font-semibold">
+                <span className="sr-only">Carb count</span>
+                {cardData.carbs || 0}g
+              </dd>
             </div>
           </div>
           <div className="grid grid-cols-2 border-b-1 border-orange-500">
@@ -75,7 +97,10 @@ const FoodCard = ({ data }: { data: GlanceData }) => {
               <dt className="font-semibold">Fat</dt>
             </div>
             <div className="col-span-1">
-              <dd className="font-semibold">{data.fat}g</dd>
+              <dd className="font-semibold">
+                <span className="sr-only">Fat count</span>
+                {cardData.fat || 0}g
+              </dd>
             </div>
           </div>
           <div className="grid grid-cols-2 border-b-1 border-orange-500">
@@ -83,12 +108,15 @@ const FoodCard = ({ data }: { data: GlanceData }) => {
               <dt className="font-semibold">Protein</dt>
             </div>
             <div className="col-span-1">
-              <dd className="font-semibold">{data.protein}g</dd>
+              <dd className="font-semibold">
+                <span className="sr-only">Protein count</span>
+                {cardData.protein || 0}g
+              </dd>
             </div>
           </div>
-        </div>
-      </div>
-    </motion.div>
+        </article>
+      </section>
+    </div>
   );
 };
 

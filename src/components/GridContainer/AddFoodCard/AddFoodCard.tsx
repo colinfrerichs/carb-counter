@@ -10,7 +10,7 @@ import React from "react";
 const AddFoodCard = () => {
   return (
     <button
-      className="transition duration-150 active:scale-95 active:bg-red-600 md:hover:scale-110 bg-[#3B82F6] hover:bg-blue-600 py-2 px-4 rounded-4xl"
+      className="transition duration-150 active:scale-95 md:hover:scale-110 bg-[#3B82F6] hover:bg-blue-600 py-2 px-4 rounded-4xl"
       // onClick={onButtonClick}
     >
       <svg

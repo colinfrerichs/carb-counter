@@ -25,7 +25,7 @@ const CardContainer = ({ cardData }: { cardData: CardData }) => {
 
   useEffect(() => {
     setData(cardData);
-  }, [cardData]);
+  }, [cardData]); // Dependency list -> this useEffect will only fire when cardData changes.
 
   /**
    * @function handleExpandCard

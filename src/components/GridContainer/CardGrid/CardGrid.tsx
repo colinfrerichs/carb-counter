@@ -2,6 +2,7 @@
 
 import AddFoodCard from "../AddFoodCard/AddFoodCard";
 import CardContainer from "./CardContainer/CardContainer";
+import EmptyGrid from "../EmptyGrid";
 import React from "react";
 
 interface Cards {
@@ -22,7 +23,7 @@ interface Cards {
  * @returns HTMLDivElement
  */
 const CardGrid = ({ cards }: { cards: Cards[] }) => {
-  return (
+  return cards.length ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {cards.map((card) => (
         <CardContainer key={card.id} cardData={{ ...card }} />
@@ -31,6 +32,8 @@ const CardGrid = ({ cards }: { cards: Cards[] }) => {
         <AddFoodCard />
       </div>
     </div>
+  ) : (
+    <EmptyGrid />
   );
 };
 
